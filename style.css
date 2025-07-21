@@ -1,0 +1,232 @@
+/* 全局样式 */
+body {
+    font-family: 'KaiTi', 'SimSun', 'STSong', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a0f08;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" opacity="0.05"><path d="M0 0L200 200M200 0L0 200" stroke="%23d4af37" stroke-width="1"/></svg>'), linear-gradient(to bottom, #1a0f08, #2d1b0b);
+    color: #d4af37;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 100px rgba(212, 175, 55, 0.1);
+}
+
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 12px 24px;
+    border: 2px solid #d4af37;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+    background: rgba(45, 27, 11, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+    color: #d4af37;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    border-color: #f9f299;
+    color: #f9f299;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(179, 139, 89, 0.1), transparent);
+    transition: all 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* 计时器样式 */
+.timer {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 20px auto;
+}
+
+.timer-circle-bg {
+    fill: none;
+    stroke: #3a2410;
+    stroke-width: 6;
+}
+
+.timer-circle-fill {
+    fill: none;
+    stroke: #d4af37;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #334e5c;
+}
+
+.timer.warning .timer-circle-fill {
+    stroke: #FF9800;
+}
+
+.timer.danger .timer-circle-fill {
+    stroke: #F44336;
+}
+
+/* 加载动画 */
+.loading-dots {
+    display: inline-block;
+    font-size: inherit;
+    color: inherit;
+}
+
+.loading-dots span {
+    opacity: 0;
+    animation: loading-dots 1.5s infinite;
+}
+
+.loading-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes loading-dots {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* 结果界面样式 */
+.result {
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0;
+    color: #f9f299;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.analysis, .extension {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.analysis {
+    background-color: #f8f9fa;
+}
+
+.extension {
+    background-color: #e9f5ff;
+}
+
+.hint, .analysis, .extension {
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #5d4037;
+    background-color: rgba(45, 27, 11, 0.9);
+    color: #e5c100;
+}
+
+/* 按钮颜色 */
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #8B0000;
+    color: #FFD700;
+    border-color: #CD5C5C;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    #app {
+        padding: 10px;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+/* 段位进度条样式 */
+.rank-progress {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(30, 18, 5, 0.8);
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+}
+
+.rank-progress-bar {
+    height: 10px;
+    background-color: #3a2410;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+/* 题目文本样式 */
+.question {
+    color: #856200; /* 更深的金色 */
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.rank-progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #d4af37, #f9f299);
+    transition: width 0.5s ease;
+}
+
+.rank-info {
+    display: flex;
+    justify-content: space-between;
+    color: #d4af37;
+    font-family: 'KaiTi', serif;
+}
